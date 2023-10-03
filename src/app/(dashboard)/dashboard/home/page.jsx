@@ -1,9 +1,38 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { useDetailsMutation } from "@/app/redux/features/details/detailsApiSlice";
 
 const Home = () => {
-  return <Container>Dashboard</Container>;
+  const dispatch = useDispatch();
+
+  const [details, { isLoading, isError }] = useDetailsMutation();
+
+  useEffect(() => {
+    console.log("useEffect is running");
+    getDashboardDetails();
+  }, []);
+
+  const getDashboardDetails = async () => {
+    try {
+      const response = await details({
+        DisplayLength: 10,
+        DisplayStart: 0,
+        FromDate: "",
+        ToDate: "",
+        Status: "",
+        StatusExtra: "",
+      }).unwrap();
+
+      if (response.code === "100") {
+      }
+    } catch (error) {
+      console.error("Error creating post:", error);
+    }
+  };
+
+  return <Container>Home Dashboard</Container>;
 };
 
 export default Home;

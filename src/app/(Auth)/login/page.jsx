@@ -1,18 +1,48 @@
 "use client";
 import React, { useRef } from "react";
 import { styled } from "styled-components";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { useLoginMutation } from "@/app/redux/features/auth/authApiSlice";
+import { setCredentials } from "@/app/redux/features/auth/authSlice";
+
 const Login = () => {
-  const mobileRef = useRef();
+  const { push } = useRouter();
+  const dispatch = useDispatch();
+  const emailRef = useRef();
   const passwordRef = useRef();
+
+  const [login, { isLoading, isError }] = useLoginMutation();
+
+  const submitForm = async (e) => {
+    e.preventDefault();
+
+    const MobileNumber = emailRef?.current?.value;
+    const password = passwordRef?.current?.value;
+
+    try {
+      const response = await login({
+        MobileNumber,
+        password,
+        subFlag: "LogIn",
+      }).unwrap();
+
+      if (response.code === "100") {
+        dispatch(setCredentials(response));
+        toast.success("Successfully logged in....");
+        push("/dashboard/home");
+      }
+    } catch (error) {
+      console.error("Error creating post:", error);
+    }
+  };
+
   return (
     <Container>
       <FormContainer>
         <TitleContainer>Login</TitleContainer>
-        <CustomInput
-          placeholder="Enter Mobile..."
-          type="text"
-          ref={mobileRef}
-        />
+        <CustomInput placeholder="Enter Email..." type="text" ref={emailRef} />
         <CustomInput
           placeholder="Enter Password..."
           type="password"
