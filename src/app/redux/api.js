@@ -15,15 +15,20 @@ const baseQuery = fetchBaseQuery({
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const accessToken = getState()?.auth?.accessToken;
-    const tokenExpired = TokenService.isAccessExpired();
-    if (accessToken && !tokenExpired) {
-      headers.set("Authorization", `Bearer ${accessToken}`);
-    } else {
-      headers.set("Content-Type", "application/json");
-    }
+    headers.set("Authorization", `Bearer ${accessToken}`);
     return headers;
   },
 });
+
+const refreshAccessToken = async (api, extraOptions) => {
+  const modifiedArgs = {
+    method: "POST",
+    url: "/UserManagement/GenerateToken",
+    body: { UserToken: api.getState().auth.token },
+  };
+
+  return await baseQuery(modifiedArgs, api, extraOptions);
+};
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
   const { url } = args;
@@ -37,19 +42,26 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   // Create a promise to track the request.
   const requestPromise = (async () => {
     try {
-      let result = await baseQuery(args, api, extraOptions);
-      if (result?.error?.status === 401) {
-        const refreshResult = await refreshAccessToken(api, extraOptions);
-        if (refreshResult?.data?.tokenString) {
-          api.dispatch(
-            updateSetCredentials({ response: refreshResult.data.tokenString })
-          );
-          result = await baseQuery(args, api, extraOptions);
-        } else {
-          api.dispatch(logOut);
-        }
+      const tokenExpired = TokenService.isAccessExpired();
+      switch (tokenExpired) {
+        case true:
+          const refreshResult = await refreshAccessToken(api, extraOptions);
+          if (refreshResult?.data?.tokenString) {
+            api.dispatch(
+              updateSetCredentials({ response: refreshResult.data.tokenString })
+            );
+            result = await baseQuery(args, api, extraOptions);
+          } else {
+            api.dispatch(logOut);
+          }
+          return result;
+
+        case false:
+          const result = await baseQuery(args, api, extraOptions);
+          return result;
+        default:
+          return;
       }
-      return result;
     } finally {
       // Release the lock when the request is completed.
       delete requestLocks[url];
@@ -61,16 +73,6 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 
   // Use Promise.all to await multiple requests, including potential duplicates.
   return Promise.all([requestPromise]);
-};
-
-const refreshAccessToken = async (api, extraOptions) => {
-  const modifiedArgs = {
-    method: "POST",
-    url: "/UserManagement/GenerateToken",
-    body: { UserToken: api.getState().auth.token },
-  };
-
-  return await baseQuery(modifiedArgs, api, extraOptions);
 };
 
 export const apiSlice = createApi({
