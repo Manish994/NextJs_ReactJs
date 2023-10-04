@@ -45,24 +45,24 @@ export { updateSetCredentials };
 export default authSlice.reducer;
 
 export const selectCurrentUser = (state) => {
-  if (state?.userName) return state.userName;
+  if (state?.auth?.userName) return state.auth.userName;
 
   return null;
 };
 
 export const selectCurrentUserId = (state) => {
-  if (state?.userId) return state.userId;
+  if (state?.auth?.userId) return state.auth.userId;
 
   return null;
 };
 
 export const selectRefreshToken = (state) => {
-  if (state?.token) return state.token;
+  if (state?.auth?.token) return state.token;
 
   return null;
 };
 export const selectAccessToken = (state) => {
-  if (state?.accessToken) return state.accessToken;
+  if (state?.auth?.accessToken) return state.accessToken;
 
   return null;
 };

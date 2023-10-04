@@ -1,9 +1,8 @@
-import Cookie from "js-cookie";
 import jwtDecode from "jwt-decode";
 
 const getUser = () => {
   try {
-    const userName = Cookie.get("userName");
+    const userName = sessionStorage.getItem("userName");
     return userName;
   } catch (error) {
     return null;
@@ -12,7 +11,7 @@ const getUser = () => {
 
 const getUserId = () => {
   try {
-    const userId = Cookie.get("userId");
+    const userId = sessionStorage.getItem("userId");
     return userId;
   } catch (error) {
     return null;
@@ -21,8 +20,8 @@ const getUserId = () => {
 
 const getToken = () => {
   try {
-    const userName = Cookie.get("userName");
-    const refreshToken = Cookie.get("refreshToken");
+    const userName = sessionStorage.getItem("userName");
+    const refreshToken = sessionStorage.getItem("refreshToken");
 
     if (userName && refreshToken) {
       return refreshToken;
@@ -37,7 +36,7 @@ const getToken = () => {
 
 const getAccessToken = () => {
   try {
-    const accessToken = Cookie.get("accessToken");
+    const accessToken = sessionStorage.getItem("accessToken");
 
     if (accessToken) {
       return accessToken;
@@ -67,9 +66,9 @@ const updateLocalToken = (userName, userId, token) => {
       secure: process.env.NEXT_PUBLIC_NODE_ENV === "production",
     };
 
-    Cookie.set("userName", userName, accessTokenCokieOptions);
-    Cookie.set("userId", userId, accessTokenCokieOptions);
-    Cookie.set("refreshToken", token, refreshTokenCokieOptions);
+    sessionStorage.setItem("userName", userName, accessTokenCokieOptions);
+    sessionStorage.setItem("userId", userId, accessTokenCokieOptions);
+    sessionStorage.setItem("refreshToken", token, refreshTokenCokieOptions);
   } catch (error) {
     return false;
   }
@@ -85,7 +84,7 @@ const updateLocalAccessToken = (accessToken) => {
       secure: process.env.NEXT_PUBLIC_NODE_ENV === "production",
     };
 
-    Cookie.set("accessToken", accessToken, accessTokenCokieOptions);
+    sessionStorage.setItem("accessToken", accessToken, accessTokenCokieOptions);
   } catch (error) {
     return false;
   }
@@ -93,22 +92,7 @@ const updateLocalAccessToken = (accessToken) => {
 
 const removeUser = () => {
   try {
-    const accessToken = Cookie.get("accessToken");
-    const refreshToken = Cookie.get("refreshToken");
-    const userId = Cookie.get("userId");
-    const userName = Cookie.get("userName");
-    if (accessToken) {
-      Cookies.remove("accessToken", { path: "/" });
-    }
-    if (refreshToken) {
-      Cookies.remove("refreshToken", { path: "/" });
-    }
-    if (userId) {
-      Cookies.remove("userId");
-    }
-    if (userName) {
-      Cookies.remove("userName");
-    }
+    sessionStorage.clear();
   } catch (error) {
     console.log(error);
     return false;
@@ -117,7 +101,7 @@ const removeUser = () => {
 
 const isAccessExpired = () => {
   try {
-    const accessToken = Cookie.get("accessToken");
+    const accessToken = sessionStorage.getItem("accessToken");
     if (accessToken) {
       const decodedUser = jwtDecode(accessToken);
       return new Date().getTime() > new Date(decodedUser.exp * 1000);
