@@ -15,7 +15,7 @@ export const detailsApiSlice = apiSlice.injectEndpoints({
       query: (credentials) => ({
         url: "/UserManagement/GetUserDetailsGrid",
         method: "POST",
-        body: credentials, // Do not spread the credentials here
+        body: credentials,
       }),
     }),
   }),

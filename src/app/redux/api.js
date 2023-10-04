@@ -12,10 +12,12 @@ const requestLocks = {};
 
 const baseQuery = fetchBaseQuery({
   baseUrl: apiLink,
-  credentials: "include",
+  // crendentials: "include"
+  credentials: "same-origin",
   prepareHeaders: (headers, { getState }) => {
     const accessToken = getState()?.auth?.accessToken;
     headers.set("Authorization", `Bearer ${accessToken}`);
+    headers.set("Content-Type", "application/json");
     return headers;
   },
 });

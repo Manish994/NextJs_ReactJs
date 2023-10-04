@@ -13,7 +13,7 @@ export const authApiSlice = createApi({
       query: (credentials) => ({
         url: "/UserManagement/Login",
         method: "POST",
-        body: credentials, // Do not spread the credentials here
+        body: credentials,
       }),
     }),
   }),
