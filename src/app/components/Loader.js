@@ -1,18 +1,22 @@
 "use client";
-import React from "react";
-import styled from "styled-components";
+// material-ui
+import LinearProgress from "@mui/material/LinearProgress";
+import { styled } from "@mui/material/styles";
 
-function Loading() {
-  return <Container>Loading...</Container>;
-}
+// styles
+const LoaderWrapper = styled("div")({
+  position: "fixed",
+  top: 0,
+  left: 0,
+  zIndex: 1301,
+  width: "100%",
+});
+
+// ==============================|| LOADER ||============================== //
+const Loading = () => (
+  <LoaderWrapper>
+    <LinearProgress color="primary" />
+  </LoaderWrapper>
+);
 
 export default Loading;
-
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;

@@ -8,7 +8,7 @@ import {
   selectCurrentUserId,
   selectCurrentUser,
 } from "../redux/features/auth/authSlice";
-import Loading from "../../components/Loader";
+import Loading from "@/app/components/Loader";
 
 const authenticatedRoutes = ["/dashboard/home"];
 
@@ -31,5 +31,6 @@ export default function RequireAuth({ children }) {
     if (currentuser) setUser(currentuser);
   }, []);
 
+  // if (currentuser) return <Loading />;
   return <>{children}</>;
 }

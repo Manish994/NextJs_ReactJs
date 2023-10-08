@@ -15,7 +15,6 @@ import { Divider, Grid, Stack, Typography, useMediaQuery } from "@mui/material";
 import AuthWrapper from "../AuthWrapper";
 import AuthCardWrapper from "../AuthCardWrapper";
 import AuthLogin from "./AuthLogin";
-import Logo from "@/app/components/Logo";
 import AuthFooter from "@/app/components/cards/AuthFooter";
 
 const Login = () => {
@@ -76,9 +75,6 @@ const Login = () => {
                   alignItems="center"
                   justifyContent="center"
                 >
-                  <Grid item sx={{ mb: 3 }}>
-                    <Logo />
-                  </Grid>
                   <Grid item xs={12}>
                     <Grid
                       container

@@ -41,10 +41,11 @@ export const theme = () => {
     typography: themeTypography(themeOption),
   };
 
+  // Create and return the theme object
   const themes = createTheme(themeOptions);
   themes.components = componentStyleOverrides(themeOption);
 
-  return themes;
+  return themes; // Return the theme object
 };
 
 export default theme;
