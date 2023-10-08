@@ -21,4 +21,17 @@ export const detailsApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
+export const detailsApiSliced = apiSlice.injectEndpoints({
+  baseEndpoint: fetchBaseQuery({ baseUrl: baseEndPoint }),
+  endpoints: (builder) => ({
+    details: builder.mutation({
+      query: (credentials) => ({
+        url: "/UserManagement/GetUserDetailsGrid",
+        method: "POST",
+        body: credentials,
+      }),
+    }),
+  }),
+});
+
 export const { useDetailsMutation } = detailsApiSlice;

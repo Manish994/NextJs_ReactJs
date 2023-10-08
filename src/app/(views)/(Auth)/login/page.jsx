@@ -7,7 +7,19 @@ import { useDispatch } from "react-redux";
 import { useLoginMutation } from "@/app/redux/features/auth/authApiSlice";
 import { setCredentials } from "@/app/redux/features/auth/authSlice";
 
+// material-ui
+import { useTheme } from "@mui/material/styles";
+import { Divider, Grid, Stack, Typography, useMediaQuery } from "@mui/material";
+
+// project imports
+import AuthWrapper from "../AuthWrapper";
+import AuthCardWrapper from "../AuthCardWrapper";
+
 const Login = () => {
+  //
+  const theme = useTheme();
+  const matchDownSM = useMediaQuery(theme.breakpoints.down("md"));
+
   const { push } = useRouter();
   const dispatch = useDispatch();
   const emailRef = useRef();
