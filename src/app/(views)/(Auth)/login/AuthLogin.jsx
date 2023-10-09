@@ -25,7 +25,8 @@ import { Formik } from "formik";
 
 // project imports
 // import useScriptRef from "hooks/useScriptRef";
-import AnimateButton from "../../../components/extended/AnimateButton";
+
+import AnimateButton from "@/app/components/extended/AnimateButton";
 
 // assets
 import Visibility from "@mui/icons-material/Visibility";

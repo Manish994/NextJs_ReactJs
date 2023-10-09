@@ -2,14 +2,20 @@
 import { createTheme } from "@mui/material/styles";
 
 // assets
-
+// import colors from '@/assets/scss/_themes-vars.module.scss';
 import colors from "@/app/assets/scss/_themes-vars.module.scss";
+
 // project imports
 import componentStyleOverrides from "./compStyleOverride";
 import themePalette from "./palette";
 import themeTypography from "./typography";
 
-export const theme = () => {
+/**
+ * Represent theme style and structure as per Material-UI
+ * @param {JsonObject} customization customization parameter object
+ */
+
+export const theme = (customization) => {
   const color = colors;
 
   const themeOption = {
@@ -24,6 +30,7 @@ export const theme = () => {
     menuSelected: color.secondaryDark,
     menuSelectedBack: color.secondaryLight,
     divider: color.grey200,
+    customization,
   };
 
   const themeOptions = {
@@ -41,11 +48,10 @@ export const theme = () => {
     typography: themeTypography(themeOption),
   };
 
-  // Create and return the theme object
   const themes = createTheme(themeOptions);
   themes.components = componentStyleOverrides(themeOption);
 
-  return themes; // Return the theme object
+  return themes;
 };
 
 export default theme;

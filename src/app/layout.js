@@ -1,12 +1,8 @@
+import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { ReduxProvider } from "./redux/provider";
-
-import { ThemeProvider } from "@mui/material/styles";
-import { CssBaseline, StyledEngineProvider } from "@mui/material";
-
-// Import your theme object
-import theme from "@/app/themes/index";
+import { ReduxProvider } from "@/app/redux/provider";
+import App from "@/app/App";
 
 export const metadata = {
   title: "Remittance",
@@ -18,12 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <ReduxProvider>
-          <StyledEngineProvider>
-            <ThemeProvider theme={theme}>
-              <CssBaseline />
-              {children}
-            </ThemeProvider>
-          </StyledEngineProvider>
+          <App children={children}></App>
         </ReduxProvider>
         <ToastContainer
           position="bottom-right"

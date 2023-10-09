@@ -1,5 +1,7 @@
 //"use client";
-import RequireAuth from "../../lib/RequireAuth";
+// import RequireAuth from "../../lib/RequireAuth";
+
+import RequireAuth from "@/app/lib/RequireAuth";
 
 export const metadata = {
   title: "Create Next App",

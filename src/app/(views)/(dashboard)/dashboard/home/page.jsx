@@ -1,13 +1,15 @@
 "use client";
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useDetailsMutation } from "@/app/redux/features/details/detailsApiSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
 
   const [details, { isLoading, isError }] = useDetailsMutation();
+
+  const customization = useSelector((state) => state.customization);
 
   useEffect(() => {
     console.log("useEffect is running");
