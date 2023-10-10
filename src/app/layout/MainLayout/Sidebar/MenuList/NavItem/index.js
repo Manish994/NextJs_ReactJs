@@ -56,7 +56,7 @@ const NavItem = ({ item, level }) => {
 
   let listItemProps = {
     component: forwardRef((props, ref) => (
-      <Link ref={ref} {...props} to={item?.url} target={itemTarget} />
+      <Link ref={ref} {...props} href={item?.url} target={itemTarget} />
     )),
   };
   // if (item?.external) {
@@ -70,16 +70,15 @@ const NavItem = ({ item, level }) => {
 
   // active menu item on page load
   useEffect(() => {
-    const pathSegments = router.asPath.split("/"); // Use router.asPath to get the current path
-
-    const currentIndex = pathSegments.findIndex(
-      (segment) => segment === item.id
-    );
+    const currentIndex = document.location.pathname
+      .toString()
+      .split("/")
+      .findIndex((id) => id === item.id);
     if (currentIndex > -1) {
       dispatch({ type: MENU_OPEN, id: item.id });
     }
     // eslint-disable-next-line
-  }, [router.asPath]);
+  }, [router?.asPath]);
 
   return (
     <ListItemButton

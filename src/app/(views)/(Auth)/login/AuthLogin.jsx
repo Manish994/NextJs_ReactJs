@@ -48,12 +48,10 @@ function AuthLogin() {
 
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => {
-    debugger;
     setShowPassword(!showPassword);
   };
 
   const handleMouseDownPassword = (event) => {
-    debugger;
     event.preventDefault();
   };
   return (
@@ -145,7 +143,6 @@ function AuthLogin() {
           password: Yup.string().max(255).required("Password is required"),
         })}
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
-          debugger;
           try {
             // if (scriptedRef.current) {
             //   setStatus({ success: true });

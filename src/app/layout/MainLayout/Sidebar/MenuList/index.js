@@ -1,3 +1,4 @@
+"use client";
 // material-ui
 import { Typography } from "@mui/material";
 

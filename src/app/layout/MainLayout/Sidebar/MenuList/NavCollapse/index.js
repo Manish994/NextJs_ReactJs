@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 // import { useLocation, useNavigate } from 'react-router';
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 // material-ui
 import { useTheme } from "@mui/material/styles";
