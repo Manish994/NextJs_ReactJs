@@ -16,7 +16,7 @@ import {
 import Breadcrumbs from "@/components/extended/Breadcrumbs";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
-// import Customization from "../Customization";
+import Customization from "../Customization";
 // import navigation from "menu-items";
 import { drawerWidth } from "@/redux/constant";
 import { SET_MENU } from "@/redux/actions";
@@ -94,10 +94,10 @@ const MainLayout = () => {
       </AppBar>
 
       {/* drawer */}
-      {/* <Sidebar
+      <Sidebar
         drawerOpen={!matchDownMd ? leftDrawerOpened : !leftDrawerOpened}
         drawerToggle={handleLeftDrawerToggle}
-      /> */}
+      />
 
       {/* main content */}
       <Main theme={theme} open={leftDrawerOpened}>
@@ -111,7 +111,7 @@ const MainLayout = () => {
         />
         {/* <Outlet /> */}
       </Main>
-      {/* <Customization /> */}
+      <Customization />
     </Box>
   );
 };

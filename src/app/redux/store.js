@@ -13,7 +13,7 @@ export const store = configureStore({
   reducer: {
     auth: authReducer,
     [authApiSlice.reducerPath]: authApiSlice.reducer,
-    customization: customizationReducer,
+    customization: customizationReducer, // No API slice for customization
     details: detailsReducer,
     [detailsApiSlice.reducerPath]: detailsApiSlice.reducer,
   },
