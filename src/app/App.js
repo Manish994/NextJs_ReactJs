@@ -5,7 +5,10 @@ import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline, StyledEngineProvider } from "@mui/material";
 
 // defaultTheme
-import themes from "@/app/themes/index";
+import themes from "@/themes/index";
+
+// project imports
+import NavigationScroll from "@/layout/NavigationScroll";
 
 // ==============================|| APP ||============================== //
 
@@ -16,7 +19,7 @@ const App = ({ children }) => {
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={themes(customization)}>
         <CssBaseline />
-        {children}
+        <NavigationScroll> {children} </NavigationScroll>
       </ThemeProvider>
     </StyledEngineProvider>
   );

@@ -1,7 +1,9 @@
 //"use client";
-// import RequireAuth from "../../lib/RequireAuth";
 
-import RequireAuth from "@/app/lib/RequireAuth";
+import RequireAuth from "@/lib/RequireAuth";
+
+//import projects
+import Routes from "@/layout/MainLayout/index";
 
 export const metadata = {
   title: "Create Next App",
@@ -11,7 +13,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <>
-      <RequireAuth>{children}</RequireAuth>
+      <Routes>{children}</Routes>
+      {/* <RequireAuth>{children}</RequireAuth> */}
     </>
   );
 }

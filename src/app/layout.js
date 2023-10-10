@@ -1,8 +1,7 @@
-import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { ReduxProvider } from "@/app/redux/provider";
-import App from "@/app/App";
+import { ReduxProvider } from "@/redux/provider";
+import App from "@/App";
 
 export const metadata = {
   title: "Remittance",

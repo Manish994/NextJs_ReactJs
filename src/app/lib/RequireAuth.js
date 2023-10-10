@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
 import {
   selectCurrentUserId,
   selectCurrentUser,
-} from "../redux/features/auth/authSlice";
-import Loading from "@/app/components/Loader";
+} from "@/redux/features/auth/authSlice";
+import Loading from "@/components/Loader";
 
 const authenticatedRoutes = ["/dashboard/home"];
 

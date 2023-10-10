@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 // material-ui
 import { useTheme } from "@mui/material/styles";
@@ -26,13 +27,13 @@ import { Formik } from "formik";
 // project imports
 // import useScriptRef from "hooks/useScriptRef";
 
-import AnimateButton from "@/app/components/extended/AnimateButton";
+import AnimateButton from "@/components/extended/AnimateButton";
 
 // assets
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
-import Google from "@/app/assets/images/icons/social-google.svg";
+// import Google from "@/assets/images/icons/social-google.svg";
 
 function AuthLogin() {
   const theme = useTheme();
@@ -47,10 +48,12 @@ function AuthLogin() {
 
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => {
+    debugger;
     setShowPassword(!showPassword);
   };
 
   const handleMouseDownPassword = (event) => {
+    debugger;
     event.preventDefault();
   };
   return (
@@ -72,8 +75,9 @@ function AuthLogin() {
             >
               <Box sx={{ mr: { xs: 1, sm: 2, width: 20 } }}>
                 <img
-                  src={Google}
-                  // alt="google"
+                  // src={Google}
+                  src={""}
+                  alt="google"
                   width={16}
                   height={16}
                   style={{ marginRight: matchDownSM ? 8 : 16 }}
@@ -141,6 +145,7 @@ function AuthLogin() {
           password: Yup.string().max(255).required("Password is required"),
         })}
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
+          debugger;
           try {
             // if (scriptedRef.current) {
             //   setStatus({ success: true });

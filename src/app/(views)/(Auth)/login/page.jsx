@@ -4,8 +4,8 @@ import { styled } from "styled-components";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { useLoginMutation } from "@/app/redux/features/auth/authApiSlice";
-import { setCredentials } from "@/app/redux/features/auth/authSlice";
+import { useLoginMutation } from "@/redux/features/auth/authApiSlice";
+import { setCredentials } from "@/redux/features/auth/authSlice";
 
 // material-ui
 import { useTheme } from "@mui/material/styles";
@@ -15,7 +15,7 @@ import { Divider, Grid, Stack, Typography, useMediaQuery } from "@mui/material";
 import AuthWrapper from "../AuthWrapper";
 import AuthCardWrapper from "../AuthCardWrapper";
 import AuthLogin from "./AuthLogin";
-import AuthFooter from "@/app/components/cards/AuthFooter";
+import AuthFooter from "@/components/cards/AuthFooter";
 
 const Login = () => {
   //
