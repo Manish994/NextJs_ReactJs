@@ -13,9 +13,9 @@ import {
 } from "@mui/material";
 
 // project imports
-// import Breadcrumbs from "@/components/extended/Breadcrumbs";
+import Breadcrumbs from "@/components/extended/Breadcrumbs";
 import Header from "./Header";
-// import Sidebar from "./Sidebar";
+import Sidebar from "./Sidebar";
 // import Customization from "../Customization";
 // import navigation from "menu-items";
 import { drawerWidth } from "@/redux/constant";
@@ -102,13 +102,13 @@ const MainLayout = () => {
       {/* main content */}
       <Main theme={theme} open={leftDrawerOpened}>
         {/* breadcrumb */}
-        {/* <Breadcrumbs
+        <Breadcrumbs
           separator={IconChevronRight}
           navigation={navigation}
           icon
           title
           rightAlign
-        /> */}
+        />
         {/* <Outlet /> */}
       </Main>
       {/* <Customization /> */}

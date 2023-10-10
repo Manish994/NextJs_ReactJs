@@ -1,12 +1,11 @@
 import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 
-// import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
 // material-ui
 import { useTheme } from "@mui/material/styles";
 import {
-  Avatar,
   Box,
   Card,
   CardContent,
@@ -110,7 +109,7 @@ const ProfileSection = () => {
           },
         }}
         icon={
-          <Avatar
+          <Image
             src={User1}
             sx={{
               ...theme.typography.mediumAvatar,

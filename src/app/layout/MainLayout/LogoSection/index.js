@@ -19,7 +19,7 @@ const LogoSection = () => {
       disableRipple
       onClick={() => dispatch({ type: MENU_OPEN, id: defaultId })}
     >
-      <Image src={LogoPayRu} width="64" height="64" />
+      <Image src={LogoPayRu} width="92" height="32" />
     </ButtonBase>
   );
 };
