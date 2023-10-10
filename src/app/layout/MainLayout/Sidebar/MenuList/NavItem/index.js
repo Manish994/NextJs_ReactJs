@@ -2,7 +2,6 @@
 import PropTypes from "prop-types";
 import { forwardRef, useEffect } from "react";
 // import { Link, useLocation } from "react-router-dom";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -16,6 +15,7 @@ import {
   ListItemText,
   Typography,
   useMediaQuery,
+  Button,
 } from "@mui/material";
 
 // project imports
@@ -29,7 +29,7 @@ import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 const NavItem = ({ item, level }) => {
   const theme = useTheme();
   const dispatch = useDispatch();
-  const router = useRouter();
+  const { router, push } = useRouter();
   // const { pathname } = useLocation();
   const customization = useSelector((state) => state.customization);
   const matchesSM = useMediaQuery(theme.breakpoints.down("lg"));
@@ -56,7 +56,12 @@ const NavItem = ({ item, level }) => {
 
   let listItemProps = {
     component: forwardRef((props, ref) => (
-      <Link ref={ref} {...props} href={item?.url} target={itemTarget} />
+      <Button
+        ref={ref}
+        {...props}
+        target={itemTarget}
+        onClick={() => push(item?.url)}
+      />
     )),
   };
   // if (item?.external) {

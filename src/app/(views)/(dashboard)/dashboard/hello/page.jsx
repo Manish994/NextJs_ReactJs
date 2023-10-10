@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useDetailsMutation } from "@/redux/features/details/detailsApiSlice";
 
-const Home = () => {
+const Hello = () => {
   const dispatch = useDispatch();
 
   const [details, { isLoading, isError }] = useDetailsMutation();
@@ -33,10 +33,10 @@ const Home = () => {
     }
   };
 
-  return <Container>Home Dashboard</Container>;
+  return <Container>Hello Page wELCOME</Container>;
 };
 
-export default Home;
+export default Hello;
 
 const Container = styled.div`
   width: 100vw;

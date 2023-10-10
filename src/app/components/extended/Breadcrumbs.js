@@ -59,9 +59,11 @@ const Breadcrumbs = ({
     if (menu.children) {
       menu.children.filter((collapse) => {
         if (collapse.type && collapse.type === "collapse") {
+          debugger;
           getCollapse(collapse);
         } else if (collapse.type && collapse.type === "item") {
-          if (document.location.pathname === config.basename + collapse.url) {
+          debugger;
+          if (document.location.pathname === collapse.url) {
             setMain(menu);
             setItem(collapse);
           }
@@ -73,6 +75,7 @@ const Breadcrumbs = ({
 
   useEffect(() => {
     navigation?.items?.map((menu) => {
+      debugger;
       if (menu.type && menu.type === "group") {
         getCollapse(menu);
       }
