@@ -10,7 +10,6 @@ const Contact = () => {
   const [details, { isLoading, isError }] = useDetailsMutation();
 
   useEffect(() => {
-    debugger;
     console.log("useEffect is running");
     // getDashboardDetails();
   }, []);

@@ -4,6 +4,7 @@ import RequireAuth from "@/lib/RequireAuth";
 
 //import projects
 import Routes from "@/layout/MainLayout/index";
+import Loading from "@/components/Loader";
 
 export const metadata = {
   title: "Create Next App",
@@ -13,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <>
-      <Routes>{children}</Routes>
+      <Routes children={children}></Routes>
       {/* <RequireAuth>{children}</RequireAuth> */}
     </>
   );

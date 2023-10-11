@@ -1,29 +1,21 @@
 "use client";
 import { useEffect } from "react";
-import { Router } from "next/router";
+import { usePathname } from "next/navigation";
 
 // ==============================|| NAVIGATION SCROLL TO TOP ||============================== //
 
 const NavigationScroll = ({ children }) => {
+  const pathname = usePathname();
+
   useEffect(() => {
-    const handleRouteChange = (url) => {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "smooth",
-      });
-    };
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, [pathname]);
 
-    // Attach the event listener using the Router object.
-    Router.events.on("routeChangeComplete", handleRouteChange);
-
-    // Remove the event listener when the component unmounts.
-    return () => {
-      Router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, []);
-
-  return children || null;
+  return <>{children}</>;
 };
 
 export default NavigationScroll;

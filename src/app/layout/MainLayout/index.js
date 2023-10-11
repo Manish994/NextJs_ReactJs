@@ -1,6 +1,5 @@
 "use client";
 import { useDispatch, useSelector } from "react-redux";
-// import { Outlet } from "react-router-dom";
 
 // material-ui
 import { styled, useTheme } from "@mui/material/styles";
@@ -18,6 +17,7 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Customization from "../Customization";
 import navigation from "@/menu-items";
+import Loading from "@/components/Loader";
 import { drawerWidth } from "@/redux/constant";
 import { SET_MENU } from "@/redux/actions";
 
@@ -62,7 +62,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
 
 // ==============================|| MAIN LAYOUT ||============================== //
 
-const MainLayout = () => {
+const MainLayout = ({ children }) => {
   const theme = useTheme();
   const matchDownMd = useMediaQuery(theme.breakpoints.down("md"));
   // Handle left drawer
@@ -110,9 +110,9 @@ const MainLayout = () => {
             title
             rightAlign
           />
-
-          {/* <Outlet /> */}
+          {children}
         </Main>
+
         <Customization />
       </Box>
     </>

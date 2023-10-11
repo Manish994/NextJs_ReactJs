@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useDetailsMutation } from "@/redux/features/details/detailsApiSlice";
 
-const Hello = () => {
+const Thamel = () => {
   const dispatch = useDispatch();
 
   const [details, { isLoading, isError }] = useDetailsMutation();
@@ -32,10 +32,10 @@ const Hello = () => {
     }
   };
 
-  return <Container>Hello Page wELCOME</Container>;
+  return <Container>Thamel Page wELCOME</Container>;
 };
 
-export default Hello;
+export default Thamel;
 
 const Container = styled.div`
   width: 100vw;

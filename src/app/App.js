@@ -19,7 +19,7 @@ const App = ({ children }) => {
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={themes(customization)}>
         <CssBaseline />
-        <NavigationScroll> {children} </NavigationScroll>
+        <NavigationScroll children={children}> {children}</NavigationScroll>
       </ThemeProvider>
     </StyledEngineProvider>
   );

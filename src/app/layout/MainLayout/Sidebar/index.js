@@ -40,7 +40,7 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
 
           <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
             <Chip
-              label={process.env.REACT_APP_VERSION}
+              label={process.env.NEXT_APP_VERSION}
               disabled
               chipcolor="secondary"
               size="small"

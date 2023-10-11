@@ -1,8 +1,7 @@
 "use client";
 import PropTypes from "prop-types";
 import { forwardRef, useEffect } from "react";
-// import { Link, useLocation } from "react-router-dom";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 
 // material-ui
@@ -23,14 +22,15 @@ import { MENU_OPEN, SET_MENU } from "@/redux/actions";
 
 // assets
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import Loading from "@/components/Loader";
 
 // ==============================|| SIDEBAR MENU LIST ITEMS ||============================== //
 
 const NavItem = ({ item, level }) => {
   const theme = useTheme();
   const dispatch = useDispatch();
-  const { router, push } = useRouter();
-  // const { pathname } = useLocation();
+  const { push } = useRouter();
+  const pathname = usePathname();
   const customization = useSelector((state) => state.customization);
   const matchesSM = useMediaQuery(theme.breakpoints.down("lg"));
 
@@ -64,9 +64,6 @@ const NavItem = ({ item, level }) => {
       />
     )),
   };
-  // if (item?.external) {
-  //   listItemProps = { component: "a", href: {item.url}, target: itemTarget };
-  // }
 
   const itemHandler = (id) => {
     dispatch({ type: MENU_OPEN, id });
@@ -83,7 +80,7 @@ const NavItem = ({ item, level }) => {
       dispatch({ type: MENU_OPEN, id: item.id });
     }
     // eslint-disable-next-line
-  }, [router?.asPath]);
+  }, [pathname]);
 
   return (
     <ListItemButton

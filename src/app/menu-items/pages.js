@@ -25,7 +25,7 @@ const pages = {
           id: "login",
           title: "Login",
           type: "item",
-          url: "/login",
+          url: "/dashboard/thamel",
           target: true,
         },
         {
